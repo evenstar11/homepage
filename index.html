@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device-Specific Images</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        // Function to detect if the user is on a mobile device
+        function isMobileDevice() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return /mobile|android|iphone|ipad|ipod/i.test(userAgent);
+        }
+
+        // Select the content div
+        const contentDiv = document.getElementById("content");
+
+        // Dynamically display the appropriate image
+        const img = document.createElement("img");
+
+        if (isMobileDevice()) {
+            // Image for mobile devices
+            img.src = "mobile-image.jpg"; // Replace with the path to your mobile image
+            img.alt = "Image for Mobile Users";
+        } else {
+            // Image for desktop devices
+            img.src = "desktop-image.jpg"; // Replace with the path to your desktop image
+            img.alt = "Image for Desktop Users";
+        }
+
+        // Append the image to the content div
+        contentDiv.appendChild(img);
+    </script>
+</body>
+</html>
